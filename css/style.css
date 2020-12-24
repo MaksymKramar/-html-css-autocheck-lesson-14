@@ -1,0 +1,204 @@
+/* Задание 1 SCSS. Переменные. Глобальная область видимости. */
+/* palette */
+$blue: #6610f2;
+$lightBlue: #007bff;
+$white: #fff;
+
+.btn {
+  padding: 0.25rem 1.75rem;
+  color: $white;
+  background-color: $lightBlue;
+  border: $blue;
+  cursor: pointer;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: $blue;
+}
+
+/* Задание 2 SCSS. Переменные. Локальная область видимости. */
+/* palette */
+$blue: #6610f2;
+$lightBlue: #007bff;
+$white: #fff;
+
+.up {
+  $diameter: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $white;
+  background-color: $lightBlue;
+  border: #6610f2;
+  cursor: pointer;
+  border-radius: 50%;
+  /* Измени код под этой строкой */
+  width: $diameter;
+  height: $diameter;
+}
+
+.up:hover,
+.up:focus {
+  background-color: $blue;
+}
+
+/* Задание 3 SCSS. @extend - использование существующих стилей. */
+/* palette */
+$blue: #6610f2;
+$lightBlue: #007bff;
+$white: #fff;
+
+.circle {
+  $diameter: 80px;
+  width: $diameter;
+  height: $diameter;
+  border-radius: 50%;
+}
+
+.up {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $white;
+  background-color: $lightBlue;
+  border: #6610f2;
+  cursor: pointer;
+  /* Добавь код под этой строкой */
+  @extend .circle;
+}
+
+.up:hover,
+.up:focus {
+  background-color: $blue;
+}
+
+/* Задание 4 SCSS. Плейсхолдер. */
+/* palette */
+$blue: #6610f2;
+$lightBlue: #007bff;
+$white: #fff;
+
+/* Измени код под этой строкой */
+%circle {
+  $diameter: 80px;
+  width: $diameter;
+  height: $diameter;
+  border-radius: 50%;
+}
+
+.up {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $white;
+  background-color: $lightBlue;
+  border: #6610f2;
+  cursor: pointer;
+  /* Добавь код под этой строкой */
+  @extend %circle;
+}
+
+.up:hover,
+.up:focus {
+  background-color: $blue;
+}
+
+/* Задание 5 SCSS. Миксин. */
+/* palette */
+$blue: #6610f2;
+$lightBlue: #007bff;
+$white: #fff;
+
+/* Измени код под этой строкой */
+@mixin circle($diameter) {
+  $diameter: 100px;
+  width: $diameter;
+  height: $diameter;
+  border-radius: 50%;
+}
+
+.up {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $white;
+  background-color: $lightBlue;
+  border: #6610f2;
+  cursor: pointer;
+  /* Измени код под этой строкой */
+  @include circle(100px);
+}
+
+.up:hover,
+.up:focus {
+  background-color: $blue;
+}
+
+/* Задание 6 SCSS. Вложенность селекторов. */
+label {
+  span {
+    color: #888;
+  }
+}
+label:focus-within {
+  span {
+    color: green;
+  }
+}
+
+/* Задание 7 SCSS. Конкатенация селекторов с помощью оператора &. */
+label {
+  span {
+    color: #888;
+  }
+  &:focus-within {
+    span {
+      color: green;
+    }
+  }
+}
+
+/* Задание 8 SCSS. Карты (словари). */
+body {
+  text-align: center;
+}
+
+$rgb: (
+  "red": #f00,
+  "green": #080,
+  "blue": #00f,
+);
+
+label[for="id-red"] {
+  color: map-get($rgb, "red");
+}
+
+label[for="id-green"] {
+  color: map-get($rgb, "green");
+}
+
+label[for="id-blue"] {
+  color: map-get($rgb, "blue");
+}
+
+/* Задание 9 SCSS. Математические операции. */
+@mixin center($width, $height) {
+  margin-top: $height / -2;
+  margin-left: $width / -2;
+  position: absolute;
+  width: $width;
+  height: $height;
+  top: 50%;
+  left: 50%;
+}
+
+.box {
+  background: gold;
+  @include center(100px, 50px);
+}
+
+/* Задание 10 SCSS. Фрагментирование и импорт. */
+@import "normalizer";
+@import "variables";
+@import "header";
